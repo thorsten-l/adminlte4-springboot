@@ -108,9 +108,7 @@ Verwendete WebJars (Versionen in `pom.xml`):
   `fullcalendar` 6.1.15, `tabulator-tables` 6.3.1
 
 > AdminLTE 4 wird hier als eigenes WebJar (`de.l9g.webjars:adminlte`)
-> bereitgestellt, da es kein offizielles AdminLTE-4-WebJar gibt. Zum Bauen eines
-> neuen Asset-Stands siehe das AdminLTE-Quellprojekt im Schwester-Ordner
-> `../AdminLTE` und das dortige `CLAUDE.md`.
+> bereitgestellt, da es kein offizielles AdminLTE-4-WebJar gibt.
 
 ## Projektstruktur
 
