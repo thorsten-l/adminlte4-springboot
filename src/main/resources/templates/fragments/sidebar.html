@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<body>
+<aside th:fragment="sidebar" class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+
+    <div class="sidebar-brand">
+        <a th:href="@{/dashboard}" class="brand-link">
+            <img th:src="@{/webjars/adminlte/assets/img/AdminLTELogo.png}"
+                 alt="AdminLTE Logo" class="brand-image opacity-75 shadow"/>
+            <span class="brand-text fw-light">AdminLTE 4</span>
+        </a>
+    </div>
+
+    <div class="sidebar-wrapper">
+        <nav class="mt-2" aria-label="Main navigation">
+            <ul class="nav sidebar-menu flex-column"
+                data-lte-toggle="treeview"
+                data-accordion="false"
+                id="navigation"
+                role="menu">
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-speedometer"></i>
+                        <p>Dashboard<i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a th:href="@{/dashboard}"      class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Dashboard v1</p></a></li>
+                        <li class="nav-item"><a th:href="@{/dashboard/v2}"   class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Dashboard v2</p></a></li>
+                        <li class="nav-item"><a th:href="@{/dashboard/v3}"   class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Dashboard v3</p></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a th:href="@{/generate/theme}" class="nav-link">
+                        <i class="nav-icon bi bi-palette"></i>
+                        <p>Theme Generate</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-box-seam-fill"></i>
+                        <p>Widgets<i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a th:href="@{/widgets/small-box}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Small Box</p></a></li>
+                        <li class="nav-item"><a th:href="@{/widgets/info-box}"  class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Info Box</p></a></li>
+                        <li class="nav-item"><a th:href="@{/widgets/cards}"     class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Cards</p></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-clipboard-fill"></i>
+                        <p>
+                            Layout Options
+                            <span class="nav-badge badge text-bg-secondary me-3">11</span>
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a th:href="@{/layout/unfixed-sidebar}"                 class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Default Sidebar</p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/fixed-sidebar}"                   class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Fixed Sidebar</p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/fixed-header}"                    class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Fixed Header</p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/fixed-footer}"                    class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Fixed Footer</p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/fixed-complete}"                  class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Fixed Complete</p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/layout-custom-area}"              class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Layout <small>+ Custom Area</small></p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/sidebar-mini}"                    class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Sidebar Mini</p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/collapsed-sidebar}"               class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Sidebar Mini <small>+ Collapsed</small></p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/collapsed-sidebar-without-hover}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Sidebar Mini <small>+ Collapsed + No Hover</small></p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/logo-switch}"                     class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Sidebar Mini <small>+ Logo Switch</small></p></a></li>
+                        <li class="nav-item"><a th:href="@{/layout/layout-rtl}"                      class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Layout RTL</p></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-tree-fill"></i>
+                        <p>UI Elements<i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a th:href="@{/UI/general}"  class="nav-link"><i class="nav-icon bi bi-circle"></i><p>General</p></a></li>
+                        <li class="nav-item"><a th:href="@{/UI/icons}"    class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Icons</p></a></li>
+                        <li class="nav-item"><a th:href="@{/UI/timeline}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Timeline</p></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-envelope"></i>
+                        <p>Mailbox<i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a th:href="@{/mailbox/inbox}"   class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Inbox</p></a></li>
+                        <li class="nav-item"><a th:href="@{/mailbox/read}"    class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Read Message</p></a></li>
+                        <li class="nav-item"><a th:href="@{/mailbox/compose}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Compose</p></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-pencil-square"></i>
+                        <p>Forms<i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a th:href="@{/forms/elements}"   class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Elements</p></a></li>
+                        <li class="nav-item"><a th:href="@{/forms/layout}"     class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Layout</p></a></li>
+                        <li class="nav-item"><a th:href="@{/forms/validation}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Validation</p></a></li>
+                        <li class="nav-item"><a th:href="@{/forms/wizard}"     class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Wizard</p></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-table"></i>
+                        <p>Tables<i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a th:href="@{/tables/simple}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Simple Tables</p></a></li>
+                        <li class="nav-item"><a th:href="@{/tables/data}"   class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Data Tables</p></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-header">PAGES</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-file-earmark-text"></i>
+                        <p>Pages<i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a th:href="@{/pages/profile}"      class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Profile</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/settings}"     class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Settings</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/invoice}"      class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Invoice</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/calendar}"     class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Calendar</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/kanban}"       class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Kanban</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/chat}"         class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Chat</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/file-manager}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>File Manager</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/projects}"     class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Projects</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/pricing}"      class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Pricing</p></a></li>
+                        <li class="nav-item"><a th:href="@{/pages/faq}"          class="nav-link"><i class="nav-icon bi bi-circle"></i><p>FAQ</p></a></li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Error<i class="nav-arrow bi bi-chevron-right"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item"><a th:href="@{/pages/404}"         class="nav-link"><i class="nav-icon bi bi-circle"></i><p>404</p></a></li>
+                                <li class="nav-item"><a th:href="@{/pages/500}"         class="nav-link"><i class="nav-icon bi bi-circle"></i><p>500</p></a></li>
+                                <li class="nav-item"><a th:href="@{/pages/maintenance}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Maintenance</p></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-header">EXAMPLES</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-box-arrow-in-right"></i>
+                        <p>Auth<i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-box-arrow-in-right"></i>
+                                <p>Version 1<i class="nav-arrow bi bi-chevron-right"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item"><a th:href="@{/examples/login}"    class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Login</p></a></li>
+                                <li class="nav-item"><a th:href="@{/examples/register}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Register</p></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-box-arrow-in-right"></i>
+                                <p>Version 2<i class="nav-arrow bi bi-chevron-right"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item"><a th:href="@{/examples/login-v2}"    class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Login</p></a></li>
+                                <li class="nav-item"><a th:href="@{/examples/register-v2}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Register</p></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a th:href="@{/examples/lockscreen}" class="nav-link"><i class="nav-icon bi bi-circle"></i><p>Lockscreen</p></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-header">LABELS</li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-circle text-danger"></i><p>Important</p></a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-circle text-warning"></i><p>Warning</p></a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-circle text-info"></i><p>Informational</p></a></li>
+
+            </ul>
+
+            <div class="p-3 mt-3 border-top border-secondary border-opacity-25">
+                <a href="https://adminlte.io/themes/v4/docs/introduction.html"
+                   target="_blank" rel="noopener"
+                   class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2">
+                    <i class="bi bi-book" aria-hidden="true"></i>
+                    View documentation
+                </a>
+            </div>
+        </nav>
+    </div>
+</aside>
+</body>
+</html>

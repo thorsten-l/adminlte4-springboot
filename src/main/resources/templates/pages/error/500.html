@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/blank}">
+<head>
+    <title>500 Error Page</title>
+    <th:block layout:fragment="page-styles">
+
+    </th:block>
+</head>
+<body th:with="bodyClass='bg-body-tertiary'">
+
+<th:block layout:fragment="main-content">
+<main class="d-flex align-items-center min-vh-100 py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6 text-center">
+            <div class="display-1 fw-bold text-danger lh-1 mb-3">500</div>
+            <h1 class="h3 mb-3">Something went wrong on our end.</h1>
+            <p class="text-secondary mb-4">
+              The server encountered an unexpected condition. Our team has been notified. Please try
+              again in a moment, or contact support if the issue persists.
+            </p>
+            <div class="d-flex gap-2 justify-content-center">
+              <a href="/dashboard" class="btn btn-primary">
+                <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>
+                Back to dashboard
+              </a>
+              <a href="mailto:support@example.com" class="btn btn-outline-secondary">
+                <i class="bi bi-life-preserver me-1" aria-hidden="true"></i>
+                Contact support
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    
+    <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+    
+    <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+    
+    <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+    
+    <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    
+    <!--end::OverlayScrollbars Configure--><!--begin::Color Mode Toggle (#6010)-->
+    
+    <!--end::Color Mode Toggle-->
+</th:block>
+
+<th:block layout:fragment="page-scripts">
+
+</th:block>
+
+</body>
+</html>

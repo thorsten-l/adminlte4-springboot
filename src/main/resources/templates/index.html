@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/main}">
+<head><title>Start</title></head>
+<body>
+
+<th:block layout:fragment="main-content">
+    <div class="app-content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6"><h3 class="mb-0">Start</h3></div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item active" aria-current="page">Start</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Willkommen</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Demo-Anwendung mit <strong>AdminLTE 4</strong> als UI in einer
+                                <strong>Spring Boot 4</strong>/<strong>Thymeleaf</strong>-App mit
+                                <strong>OAuth2 Login</strong> gegen lokales <strong>Keycloak</strong>.
+                                Alle Demo-Seiten aus der Sidebar sind navigierbar.
+                            </p>
+                            <div sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/oauth2/authorization/keycloak}" class="btn btn-primary">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i> Mit Keycloak einloggen
+                                </a>
+                            </div>
+                            <div sec:authorize="isAuthenticated()">
+                                <a th:href="@{/dashboard}" class="btn btn-success">
+                                    <i class="bi bi-speedometer me-1"></i> Zum Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</body>
+</html>

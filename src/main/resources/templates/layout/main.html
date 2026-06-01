@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="de"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title layout:title-pattern="$CONTENT_TITLE | AdminLTE 4 + Spring Boot">AdminLTE 4 + Spring Boot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <meta name="color-scheme" content="light dark"/>
+    <meta name="theme-color" content="#007bff" media="(prefers-color-scheme: light)"/>
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)"/>
+    <meta name="supported-color-schemes" content="light dark"/>
+
+    <link rel="icon" type="image/png" th:href="@{/webjars/adminlte/assets/img/AdminLTELogo.png}"/>
+    <link rel="preload" th:href="@{/webjars/adminlte/css/adminlte.min.css}" as="style"/>
+
+    <link rel="stylesheet"
+          th:href="@{/webjars/source-sans-3/index.css}"
+          media="print"
+          onload="this.media='all'"/>
+
+    <link rel="stylesheet"
+          th:href="@{/webjars/overlayscrollbars/styles/overlayscrollbars.min.css}"/>
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.min.css}"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/adminlte/css/adminlte.min.css}"/>
+
+    <link rel="stylesheet"
+          th:href="@{/webjars/apexcharts/dist/apexcharts.css}"/>
+    <link rel="stylesheet"
+          th:href="@{/webjars/jsvectormap/jsvectormap.min.css}"/>
+
+    <th:block layout:fragment="page-styles"></th:block>
+</head>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+<div class="app-wrapper">
+
+    <nav th:replace="~{fragments/header :: header}"></nav>
+    <aside th:replace="~{fragments/sidebar :: sidebar}"></aside>
+
+    <main class="app-main">
+        <th:block layout:fragment="main-content">
+            <div class="app-content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6"><h3 class="mb-0">Seite</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="app-content">
+                <div class="container-fluid"><p>Default content.</p></div>
+            </div>
+        </th:block>
+    </main>
+
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
+</div>
+
+<script th:src="@{/webjars/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js}"></script>
+<script th:src="@{/webjars/popperjs__core/dist/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/adminlte/js/adminlte.min.js}"></script>
+
+<script>
+    const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
+    const Default = {
+        scrollbarTheme: 'os-theme-light',
+        scrollbarAutoHide: 'leave',
+        scrollbarClickScroll: true
+    };
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+        const isMobile = window.innerWidth <= 992;
+        if (sidebarWrapper && OverlayScrollbarsGlobal?.OverlayScrollbars !== undefined && !isMobile) {
+            OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+                scrollbars: {
+                    theme: Default.scrollbarTheme,
+                    autoHide: Default.scrollbarAutoHide,
+                    clickScroll: Default.scrollbarClickScroll
+                }
+            });
+        }
+    });
+</script>
+
+<script>
+    (() => {
+        'use strict';
+        const STORAGE_KEY = 'lte-theme';
+        const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
+        const setStoredTheme = (theme) => localStorage.setItem(STORAGE_KEY, theme);
+        const prefersDark = () => globalThis.matchMedia('(prefers-color-scheme: dark)').matches;
+        const getPreferredTheme = () => {
+            const stored = getStoredTheme();
+            if (stored) return stored;
+            return prefersDark() ? 'dark' : 'light';
+        };
+        const setTheme = (theme) => {
+            const resolved = theme === 'auto' ? (prefersDark() ? 'dark' : 'light') : theme;
+            document.documentElement.setAttribute('data-bs-theme', resolved);
+        };
+        setTheme(getPreferredTheme());
+        const showActiveTheme = (theme) => {
+            document.querySelectorAll('[data-bs-theme-value]').forEach((el) => {
+                el.classList.remove('active');
+                el.setAttribute('aria-pressed', 'false');
+                const check = el.querySelector('.bi-check-lg');
+                if (check) check.classList.add('d-none');
+            });
+            const active = document.querySelector(`[data-bs-theme-value="${theme}"]`);
+            if (active) {
+                active.classList.add('active');
+                active.setAttribute('aria-pressed', 'true');
+                const check = active.querySelector('.bi-check-lg');
+                if (check) check.classList.remove('d-none');
+            }
+            document.querySelectorAll('[data-lte-theme-icon]').forEach((icon) => {
+                icon.classList.toggle('d-none', icon.dataset.lteThemeIcon !== theme);
+            });
+        };
+        globalThis.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            const stored = getStoredTheme();
+            if (!stored || stored === 'auto') setTheme(getPreferredTheme());
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            showActiveTheme(getPreferredTheme());
+            document.querySelectorAll('[data-bs-theme-value]').forEach((toggle) => {
+                toggle.addEventListener('click', () => {
+                    const theme = toggle.getAttribute('data-bs-theme-value');
+                    setStoredTheme(theme);
+                    setTheme(theme);
+                    showActiveTheme(theme);
+                });
+            });
+        });
+    })();
+</script>
+
+<script>
+    // Highlight active sidebar item and auto-open its parent treeviews based on current URL.
+    (() => {
+        const here = window.location.pathname.replace(/\/$/, '') || '/';
+        const links = document.querySelectorAll('.app-sidebar .nav-link[href]');
+        for (const a of links) {
+            const href = (a.getAttribute('href') || '').replace(/\/$/, '') || '/';
+            if (href === here) {
+                a.classList.add('active');
+                let item = a.closest('.nav-item');
+                while (item) {
+                    item.classList.add('menu-open');
+                    const treeview = item.querySelector(':scope > .nav-treeview');
+                    if (treeview) treeview.style.display = 'block';
+                    const parentTreeview = item.parentElement?.closest('.nav-item');
+                    item = parentTreeview;
+                }
+                break;
+            }
+        }
+    })();
+</script>
+
+<th:block layout:fragment="page-scripts"></th:block>
+</body>
+</html>

@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  forward-headers-strategy: framework
+
+spring:
+  application:
+    name: adminlte4-springboot
+
+  thymeleaf:
+    cache: false  # disable for dev; enable in prod profile
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: adminlte-springboot
+            client-secret: ${KEYCLOAK_CLIENT_SECRET:change-me-in-keycloak}
+            client-name: Keycloak (local)
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid, profile, email
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8180/realms/adminlte-demo
+            user-name-attribute: preferred_username
+
+logging:
+  level:
+    org.springframework.security: INFO
